@@ -35,3 +35,40 @@ function toCamelCase(str){
   }).join('');
 }
 ```
+
+###Solution in php
+###toCamelCase("the-stealth-warrior"); // returns "theStealthWarrior"
+###toCamelCase("The_Stealth_Warrior"); // returns "TheStealthWarrior"
+
+function toCamelCase($str){
+
+ if(preg_match('/^[a-z]+-[a-z]+-[a-z]+$/i', $str)){
+		$t = explode("-", $str);
+		$comb = "";
+		foreach ($t as $key => $value) {
+			if($key==0 ){
+				continue;
+			}
+			// echo(ucwords($value));
+			$capitalize = ucwords($value);
+			$comb .= $capitalize;
+		}
+		$concat = $t[0].$comb;
+		return $concat;
+	}
+	else{
+		$t = explode("_", $str);
+		$comb = "";
+		foreach ($t as $key => $value) {
+			if($key==0 ){
+				continue;
+			}
+			// echo(ucwords($value));
+			$capitalize = ucwords($value);
+			$comb .= $capitalize;
+		}
+		$concat = $t[0].$comb;
+		return $concat;
+	} 
+
+}
